@@ -76,38 +76,38 @@ import streamlit as st
 from vertexai.preview.generative_models import GenerativeModel, GenerationConfig
 ```
 ### Initialize Session State
-if 'messages' not in st.session_state:
+```if 'messages' not in st.session_state:
     st.session_state.messages = []
-
+```
 ### Function to send Messages
-def llm_function(chat, message):
+```def llm_function(chat, message):
     st.session_state.messages.append(message)
-
-###Initialize the Generative Model for Chat
-model = GenerativeModel("gemini-pro")
-
+```
+### Initialize the Generative Model for Chat
+```model = GenerativeModel("gemini-pro")
+```
 
 ### Implement Logic for Initial Prompt
-if len(st.session_state.messages) == 0:
+```if len(st.session_state.messages) == 0:
     initial_prompt = "Introduce yourself as ReX, an assistant powered by Google Gemini. You use emojis to be interactive"
     llm_function(chat, initial_prompt)
-
-###Chat Interface
-chat = st.empty()  # Create an empty slot for the chat interface
+```
+### Chat Interface
+```chat = st.empty()  # Create an empty slot for the chat interface```
 
 ### Streamlit App Interface
-st.title("Welcome to ReX, Your Assistant")
+```st.title("Welcome to ReX, Your Assistant")
 user_name = st.text_input("Please enter your name")
 if user_name:
     personalized_greeting = f"Hello, {user_name}! I'm ReX, your assistant powered by Google Gemini. 😊"
     llm_function(chat, personalized_greeting)
-
+```
 ### Displaying Personalized Greetings Based on User Input
-if len(st.session_state.messages) > 1:
+```if len(st.session_state.messages) > 1:
     last_message = st.session_state.messages[-1]
     if "name" in last_message.lower():
         llm_function(chat, "Nice to meet you, I'm ReX! How can I assist you today?")
-
+```
 Contributing
 Feel free to fork this repository, create a branch, and submit pull requests. Any contributions to enhance ReX are welcome!
 
