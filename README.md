@@ -54,13 +54,14 @@ import vertexai
 import streamlit as st
 from vertexai.preview import generative_models
 from vertexai.preview.generative_models import GenerativeModel, Part, Content, ChatSession
-
+```
 ### Initialize Vertex AI
+```
 project = "sample-gemini"
 vertexai.init(project=project)
-
-###Configuring Generative Model
-config = generative_models.GenerationConfig(
+```
+### Configuring Generative Model
+```config = generative_models.GenerationConfig(
     temperature=0.4
 )
 model = GenerativeModel(
@@ -68,11 +69,12 @@ model = GenerativeModel(
     generation_config=config
 )
 chat = model.start_chat()
-
+```
 ### Streamlit App Code
+```
 import streamlit as st
 from vertexai.preview.generative_models import GenerativeModel, GenerationConfig
-
+```
 ### Initialize Session State
 if 'messages' not in st.session_state:
     st.session_state.messages = []
